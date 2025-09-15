@@ -15,3 +15,15 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
+
+//Alternatively  you can use ommonJS sytax:
+//requuire('./commands')
+
+// İstersen beklenmeyen 3rd-party script hatalarını yut:
+Cypress.on('uncaught:exception', () => false)
+
+require('cypress-xpath')
+
+require('cypress-iframe')
+
+

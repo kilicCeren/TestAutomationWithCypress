@@ -16,8 +16,8 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 
-//Alternatively  you can use ommonJS sytax:
-//requuire('./commands')
+//Alternatively  you can use CommonJS sytax:
+//require('./commands')
 
 // İstersen beklenmeyen 3rd-party script hatalarını yut:
 Cypress.on('uncaught:exception', () => false)
@@ -25,5 +25,3 @@ Cypress.on('uncaught:exception', () => false)
 require('cypress-xpath')
 
 require('cypress-iframe')
-
-

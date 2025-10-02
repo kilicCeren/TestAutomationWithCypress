@@ -38,10 +38,12 @@ console.log('[commands.js] loaded')
 
 Cypress.Commands.add('handleOptionalPopups', () => {
   const selectors = [
-    '.flex-wrap > .flex-row > .btn.primary',   // Çerez kabul et
+    '.flex-wrap > .flex-row > .btn.primary', 
+    '.flex-wrap > .flex-row > .btn',  // Çerez kabul et
     '#announcement-modal .icon-only',          // Reklam kapatma
     '.newsletter-popup .close-btn',             // Newsletter kapatma
     '#announcement-modal > .modal-wrapper > .dialog > .btn'
+    
 
   ]
 

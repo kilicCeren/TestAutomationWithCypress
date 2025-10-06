@@ -13,19 +13,17 @@ describe('CheckBox Methodlari', () => {
         cy.get("input[type='checkbox']").first().check() // eq(0) ve first ayni seyi ifade eder
     });
 
-    it('Toplu checkbox secme', () => {
+     it.only('Toplu checkbox secme', () => {
         cy.visit('https://www.e-bebek.com/bebek-oto-koltugu-c4219')
         // cy.get('input[type="checkbox"]').check() // sayfadaki butun checkboxlara sirayla check yapar. Yani input[type="checkbox"] olan her seye tikla dedik
-        /*
         cy.get('input[type="checkbox"]').eq(10).check().should('be.checked')
         cy.get('input[type="checkbox"]').eq(17).check().should('be.checked')
         cy.get('input[type="checkbox"]').eq(25).check().should('be.checked')
         cy.get('input[type="checkbox"]').eq(32).check().should('be.checked')
-        */
 
         //*****XPath index → 1’den başlar    Cypress .eq() → 0’dan başlar******//
 
-        cy.xpath("(//input[@type='checkbox'])[9]").check().should('be.checked')
+        //cy.xpath("(//input[@type='checkbox'])[9]").check().should('be.checked')
 
         /*cy.xpath("//input[@type='checkbox']")
         .eq(8) // 9. checkbox
@@ -33,10 +31,7 @@ describe('CheckBox Methodlari', () => {
         .should('not.be.checked')
         */
 
-        cy.xpath("(//input[@type='checkbox'])[16]").check().should('be.checked')
-        cy.xpath("(//input[@type='checkbox'])[11]").check().should('be.checked')
-        cy.xpath("(//input[@type='checkbox'])[31]").check().should('be.checked')
-
+        //cy.xpath("(//input[@type='checkbox'])[16]").check().should('be.checked')
     });
     
 });

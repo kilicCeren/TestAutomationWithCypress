@@ -36,6 +36,20 @@
 // Yüklendiğini anlamak için log
 console.log('[commands.js] loaded')
 
+Cypress.Commands.add('automationexerciseLogin',(username,password)=>{
+    cy.visit('https://www.automationexercise.com/login')
+    cy.get('[data-qa="login-email"]').type(username)
+    cy.get('[data-qa="login-password"]').type(password)
+    cy.get('[data-qa="login-button"]').click()
+})
+
+Cypress.Commands.add('amazonSearch',(productName)=>{
+    cy.visit('https://www.amazon.com')
+    cy.get('#twotabsearchtextbox').type(productName)
+    cy.get('#nav-search-submit-button').click()
+    cy.get('#twotabsearchtextbox').should('have.value',productName)
+})
+
 Cypress.Commands.add('handleOptionalPopups', () => {
   const selectors = [
     '.flex-wrap > .flex-row > .btn.primary', 

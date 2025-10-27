@@ -5,8 +5,7 @@ before(function () {
         this.data=data
     }) 
     // json dosyasinin yerini tanimladik ve veriyi this.data'ya atadik
-    // Testler baslamadan once 'sinemalar.json' fixture dosyasini yukleyip veriyi this.data icine kaydeder
-
+    // Testler baslamadan once 'automationexercise.json' fixture dosyasini yukleyip veriyi this.data icine kaydeder
     
 });
 

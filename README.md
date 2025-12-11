@@ -37,10 +37,10 @@ TestAutomationWithCypress/
 │   ├── fixtures/ # Test verileri (JSON, TXT) │   └── support/ 
 │   ├── commands.js # Özel Cypress Komutları (Örn: cy.handleOptionalPopups()) 
 │   └── e2e.js # Genel konfigürasyon ve import'lar  
-├── .gitignore
-├── cypress.config.js
-├── package-lock.json
-├── package.json
+├── .gitignore             # Git versiyon kontrol sistemi tarafından izlenmeyecek dosyalar.
+├── cypress.config.js      # Cypress'in temel konfigürasyon dosyası (Base URL, viewport, test klasörleri vb.)
+├── package-lock.json      # Bağımlılıkların tam ve kilitlenmiş sürüm bilgilerini içerir (tutarlı kurulum için).
+├── package.json           # Proje adı, sürümü ve tüm bağımlılıklar (Cypress, Faker, vs.) burada tanımlanmıştır.
 └── README.md
 ```
 
@@ -193,3 +193,191 @@ Projeyi yerel ortamınızda ayağa kaldırmak ve çalıştırmak için aşağıd
 | **`npx cypress run`** | **Headless** (Tarayıcı açmadan) modda, **Electron** ile tüm testleri çalıştırır ve ekran görüntüsü/video kaydı alır. |
 | **`npx cypress run --browser chrome --headed`** | Chrome tarayıcısını **Görünür** (`headed`) modda açarak tüm testleri çalıştırır. |
 | **`npx cypress run --spec 'cypress/e2e/day02/'`** | Sadece `day02` klasöründeki tüm testleri çalıştırır. |
+
+---
+# 🌐 TestAutomationWithCypress E2E Project
+
+This repository contains **End-to-End (E2E) test automation** exercises for modern web applications. The project is developed using the **Cypress** framework and **JavaScript**, a fast, reliable, and modern testing tool. The work covers a wide range of topics, from basic Cypress commands (Element Interactions) to advanced subjects (Custom Commands, POM, API Interception, Faker, and Fixtures).
+
+---
+
+## 🛠️ Technologies and Dependencies
+
+The core technologies and supplementary libraries used in this automation project are:
+
+* **Cypress:** The main E2E test framework.
+* **JavaScript:** The test scripting language.
+* **Mocha/Chai:** Test structure (`describe`, `it`, `context`) and Assertion libraries.
+* **`@faker-js/faker`:** For generating random and realistic test data.
+* **`cypress-file-upload`:** To facilitate file upload testing.
+* **`cypress-iframe`:** For interacting with elements inside Iframes.
+
+### 📁 Project Structure and Development Timeline
+
+The project is structured according to a 9-day training/development plan, with each day's tests gathered in a separate directory. 
+
+```
+TestAutomationWithCypress/ 
+├── cypress/ 
+│ ├── e2e/ 
+│ │ ├── POM/ # (Used in Day 7) Page Object Model Classes 
+│ │ └── testAutomationWithCypress/ 
+│ │ ├── day01/ # Basic Cypress Commands (visit, title, url, location) 
+│ │ ├── day02/ # Mocha Hooks (beforeEach), Locating Elements, Assertions 
+│ │ ├── day03/ # Login Tests, before/after Hooks, Go Command 
+│ │ ├── day04/ # Dropdown, Scroll, Checkbox, Alerts, Mouse Over 
+│ │ ├── day05/ # Iframe, Multiple Windows, Custom Commands, File Upload 
+│ │ ├── day06/ # Faker Library 
+│ │ ├── day07/ # Fixtures, POM Usage, Read/Write Files 
+│ │ ├── day08/ # Basic API Testing (GET, Assertion)
+│ │ └── day09/ # Advanced API (POST, DELETE, Intercept, Auth) 
+│ ├── fixtures/ # Test data (JSON, TXT) 
+│ └── support/ 
+│ ├── commands.js # Custom Cypress Commands (e.g., cy.handleOptionalPopups()) 
+│ └── e2e.js # General configuration and imports 
+├── .gitignore             # Files that should not be tracked by the Git version control system.
+├── cypress.config.js      # Cypress's main configuration file (Base URL, viewport, test folders, etc.)
+├── package-lock.json      # Contains the exact and locked version information of dependencies (for consistent installation).
+├── package.json           # Defines the project name, version, and all dependencies (Cypress, Faker, etc.) here.
+└── README.md
+```
+
+---
+
+## 🎯 Covered Automation Topics (Detailed List)
+
+This section summarizes the key topics covered in the daily test files.
+
+### 🗓️ Day 01: Basic Cypress and Mocha Commands
+
+| Topic | Description | Example Commands |
+| :--- | :--- | :--- |
+| **`cy.visit()`** | Page navigation. Used with Base URL (`/path`) or full URL. | ``cy.visit('/')``, ``cy.visit('http://www.site.com')`` |
+| **`cy.title()`** | Getting and asserting the page title. Assertions via regex, exact match (`eq`), and inclusion (`include`). | ``cy.title().should('match', /regex/)``, ``cy.title().should('include','...')`` |
+| **`cy.url() & cy.location()`** | Asserting the current URL and its components (pathname, protocol, hostname). | ``cy.url().should('eq', '...')``, ``cy.location('pathname').should('eq', '/path')`` |
+| **Mocha Structure** | Defining test blocks (`describe`, `it`) and using `context` as an alternative. | ``describe('Test Name', () => {})``, ``it('Scenario Name', () => {})`` |
+
+### 🗓️ Day 02: Test Setup, Element Locators, and Assertions
+
+| Topic | Description | Example Commands |
+| :--- | :--- | :--- |
+| **`beforeEach` Hook** | Setup steps that run before each test (`it` block) (e.g., `cy.visit('/')`, closing a pop-up). | ``beforeEach(() => { ... })`` |
+| **Element Locating** | Selecting elements using ID (`#`), Class (`.`), Attribute (`[]`), Text content (`cy.contains`), CSS Selector, Index (`.eq()`), First/Last element (`.first()`, `.last()`). | ``cy.get('#id')``, ``cy.contains('Text')``, ``cy.get('li').eq(2)`` |
+| **Custom Command Usage** | Defining repetitive operations (e.g., Pop-up closing) in `commands.js` and calling them with `cy.`. | ``cy.handleOptionalPopups()`` |
+| **Basic Interactions** | Searching (`.type('{enter}')`), Clicking a button (`.click()`), Filling out a login form. | ``cy.get('#search').type('film{enter}')`` |
+| **Assertion Types** | Asserting an element's text, visibility, or URL using methods like **have.text**, **include**, **be.visible**, **have.value**, **equal**. | ``cy.get('h2').should('be.visible')``, ``cy.title().should('equal', 'Title')`` |
+
+### 🗓️ Day 03: Scenario Flow and Advanced Mocha Commands
+
+| Topic | Description | Example Commands |
+| :--- | :--- | :--- |
+| **Positive/Negative Testing** | Asserting different error messages with successful (`Positive`) and unsuccessful (`Negative`) login scenarios. | ``cy.get('.error-message').should('be.visible')`` |
+| **`before` and `after` Hooks** | Code blocks that run once before the entire test suite starts (`before`) and once after it finishes (`after`). | ``before(() => { ... })`` |
+| **`afterEach` Hook** | Code that runs after each test (`it` block is completed) (e.g., logging a message). | ``afterEach(() => { ... })`` |
+| **Navigation Commands** | Moving backward/forward in the browser history and refreshing the page. | ``cy.go('back')`` / ``cy.go(-1)``, ``cy.go('forward')`` / ``cy.go(1)``, ``cy.reload(true)`` |
+| **Functional Assertion** | Breaking the Cypress command chain to perform manual assertion using Mocha/Chai's `expect` function. | ``cy.get('h2').then(text => { expect(text.text()).to.contains('...') })`` |
+| **Viewport Size** | Setting the screen size with the `cy.viewport()` command or in `cypress.config.js`. | ``cy.viewport(1366, 768)`` |
+
+### 🗓️ Day 04: Advanced UI Interactions
+
+| Topic | Description | Example Commands |
+| :--- | :--- | :--- |
+| **Dropdown Menu** | Selecting an option based on the element's **value** or visible text using the `select()` command. | ``cy.get('#dropdown').select('Option 1').should('have.value','1')`` |
+| **Scroll Operations** | Scrolling until a specific element is visible or scrolling to coordinates. Setting scroll speed (`duration`). | ``cy.get('h2').scrollIntoView({duration: 8000})``, ``cy.scrollTo(0, 1900)`` |
+| **Mouse Over (Hover)** | Triggering menus that open upon hovering over an element using `trigger('mouseover')`. | ``cy.get('.menu').trigger('mouseover')`` |
+| **Checkbox Management** | Selecting or deselecting elements using `check()` and `uncheck()` commands. Selection can be collective or by index. | ``cy.get(':checkbox').check()``, ``cy.get('input').eq(1).uncheck()`` |
+| **JavaScript Alerts** | Handling **Alert** (OK), **Confirm** (OK/Cancel), and **Prompt** (Input) windows. Use `cy.on('window:confirm', () => false)` to cancel. | ``cy.on('window:confirm', ...)`` |
+| **Super Domain Issue** | Understanding the Cypress limitation of not being able to use `cy.visit()` to two different domains within a single test (`it` block). | N/A |
+
+---
+
+## 🎯 Covered Automation Topics (Detailed List)
+
+This section summarizes the key topics covered in the daily test files.
+
+### 🗓️ Day 05: Advanced UI Interactions and Custom Commands
+
+| Topic | Description | Example Commands |
+| :--- | :--- | :--- |
+| **Iframe Management** | Accessing elements inside an **Iframe** using the `cypress-iframe` plugin. Checking if the Iframe is loaded. | ``cy.frameLoaded('#iframeID')``, ``cy.iframe().find('selector')`` |
+| **Multiple Windows** | Opening links that usually open in a new tab by removing the `target="_blank"` attribute with **`invoke('removeAttr','target')`** to keep them in the same tab. | ``cy.get('a').invoke('removeAttr','target').click()`` |
+| **New Window via URL** | Getting the URL of the page that would open and navigating to it in the same tab using **`cy.visit()`**. | ``cy.get('a').then((el) => { cy.visit(el.prop('href')) })`` |
+| **Custom Commands** | Defining repetitive tasks (`Login`, `Search`) in **`commands.js`** and calling them simply in tests. | ``cy.automationexerciseLogin('email', 'pass')``, ``cy.amazonSearch('...')`` |
+| **File Upload** | Uploading single or multiple files using the `cypress-file-upload` plugin with **`.attachFile()`**. | ``cy.get('#input').attachFile('photo.png')``, ``cy.get('#input').attachFile([f1, f2])`` |
+
+### 🗓️ Day 06: Dynamic Data Generation (Faker)
+
+| Topic | Description | Example Commands |
+| :--- | :--- | :--- |
+| **Faker Setup** | Including the **`@faker-js/faker`** library in the project (`npm install --save-dev`). | ``import { faker } from '@faker-js/faker'`` |
+| **Dynamic Data Generation** | Using realistic data like usernames, email, passwords, addresses, etc., in test scenarios. | ``faker.person.firstName()``, ``faker.internet.email()``, ``faker.location.zipCode('######')`` |
+| **Variable Definition** | Defining and using variables in JavaScript with `let`, `var`, and `const`. | ``let email = faker.internet.email()`` |
+| **Data Type Specification** | Specifying optional types/formats for data generated by Faker (e.g., Gender, phone number format). | ``faker.person.firstName('female')``, ``faker.phone.number({ style: 'human' })`` |
+
+### 🗓️ Day 07: Data Management, Fixtures, and POM
+
+| Topic | Description | Example Commands |
+| :--- | :--- | :--- |
+| **Fixtures (Data Files)** | Storing static test data (`URL`, `username`, `password`) in external **JSON** files and loading them with **`cy.fixture()`**. | ``cy.fixture('cinemas').then(function(data){ this.data=data })`` |
+| **Fixture Usage** | Loading the JSON file in the `before()` hook and accessing the data using **`this.data`**. | ``cy.visit(this.data.url)``, ``cy.get('#login-username').type(this.data.username)`` |
+| **Page Object Model (POM)** | Grouping locators and interaction methods into separate **Page** classes. Making test code clean and readable. | ``const Homepage = new HomePage();``, ``Homepage.getLoginLink().click()`` |
+| **Writing Files (`cy.writeFile`)** | Dynamically creating a file in **JSON** or **TXT** format and writing content to it. | ``cy.writeFile('cypress/fixtures/example.json', { username: '...' })`` |
+| **Reading Files (`cy.readFile`)** | Reading data from an existing file and performing assertions (`assert` / `expect`) on it. | ``cy.readFile('users.json').then((data) => { expect(data[7].name).to.equal('...') })`` |
+
+### 🗓️ Day 08: Basic API Testing (GET Requests)
+
+| Topic | Description | Example Commands |
+| :--- | :--- | :--- |
+| **JSON Object Usage** | Accessing JSON objects, Arrays, and Nested Objects in JavaScript (using `key`/`index`). | `simpleObject.key2`, `body.student[1].firstname` |
+| **`cy.request()`** | Cypress's built-in **API request** command. Sending a `GET` request to a URL. | ``cy.request('https://.../comments')`` |
+| **Header Assertion** | Checking the API response's header information (`headers`, `content-type`, `date`). | ``.its('headers').its('date').should('include','...')`` |
+| **Basic Response Assertion** | Checking the API response's **Status Code** or **Body** content using **`assert.equal`**. | ``.should((response) => { assert.equal(response.body.data[3].id, 4) })`` |
+| **Body (Payload) Assertion** | Asserting the values of specific fields (`id`, `name`, `email`) within the response body. | ``assert.equal(response.body[6].email, 'Dallas@ole.me')`` |
+
+### 🗓️ Day 09: Advanced API (POST, DELETE, Intercept, Auth)
+
+| Topic | Description | Example Commands |
+| :--- | :--- | :--- |
+| **`expect()` Assertion** | Using Chai's **`expect()`** method instead of `assert` to check API responses. | ``expect(response.status).to.equal(200)``, ``expect(response.body.id).to.equal(123)`` |
+| **POST Requests** | Sending a **`POST`** request to the API to create data and asserting the response. | ``cy.request('POST', url, { title: "Cypress" })`` |
+| **DELETE Requests** | Sending a **`DELETE`** request to the API to delete a resource and asserting its success with **Status Code 200**. | ``cy.request({ method: 'DELETE', url: '...' })`` |
+| **Authentication** | Adding **username/password** via the **`auth`** object or a **`token`** to API requests. | ``cy.request({ url: '...', auth: { username: 'admin', password: '...' } })`` |
+| **Network Interception** | **`cy.intercept()`** to intercept and mock outgoing/incoming network requests. | ``cy.intercept('GET', '**/comments/**').as('getComment')`` |
+| **Waiting and Assertion** | Waiting for the intercepted request to complete using **`cy.wait('@alias')`** and asserting its response. | ``cy.wait('@getComment').its('response').then(response => { assert.equal(response.statusCode, 200) })`` |
+
+---
+
+## 🚀 How to Run
+
+Follow the steps below to set up and run the project in your local environment.
+
+### Prerequisites
+
+* **Node.js:** (LTS version recommended)
+* **npm** or **yarn:** Package manager.
+
+### Setup and Execution
+
+1. **Clone the Repository:**
+    ```bash
+    git clone [https://github.com/YOUR_USERNAME/TestAutomationWithCypress.git](https://github.com/KULLANICI_ADINIZ/TestAutomationWithCypress.git)
+    cd TestAutomationWithCypress
+    ```
+2. **Install Dependencies:**
+    ```bash
+    npm install
+    ```
+3. **Open the Cypress Test Runner:**
+    The following command launches the Cypress application.
+    ```bash
+    npx cypress open
+    ```
+
+### CLI (Command Line Interface) Run Commands
+
+| Command | Description |
+| :--- | :--- |
+| **`npx cypress open`** | Opens the Test Runner (Allows selection of Browser and Tests). |
+| **`npx cypress run`** | Runs all tests in **Headless** mode (without opening a browser) with **Electron**, capturing screenshots/video recordings. |
+| **`npx cypress run --browser chrome --headed`** | Runs all tests using the Chrome browser in **Headed** (visible) mode. |
+| **`npx cypress run --spec 'cypress/e2e/day02/'`** | Runs only the tests within the `day02` folder. |

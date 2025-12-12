@@ -34,7 +34,8 @@ TestAutomationWithCypress/
 │   │   ├── day07/ # Fixtures, POM Kullanımı, Read/Write Files 
 │   │   ├── day08/ # Basic API Testing (GET, Assertion) 
 │   │   └── day09/ # Advanced API (POST, DELETE, Intercept, Auth) 
-│   ├── fixtures/ # Test verileri (JSON, TXT) │   └── support/ 
+│   ├── fixtures/ # Test verileri (JSON, TXT)
+│   └── support/ 
 │   ├── commands.js # Özel Cypress Komutları (Örn: cy.handleOptionalPopups()) 
 │   └── e2e.js # Genel konfigürasyon ve import'lar  
 ├── .gitignore             # Git versiyon kontrol sistemi tarafından izlenmeyecek dosyalar.

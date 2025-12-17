@@ -203,4 +203,18 @@ git commit -m "Initial commit - Cypress Framework"
 ```
 ---
 
+## 12. ✅ Kurulum Doğrulama Kontrol Listesi
+Bu bölüm, Cypress test ortamının yerel makinede doğru şekilde
+hazırlandığını hızlıca doğrulamak için referans olarak kullanılmalıdır.
+- [ ] Node.js ve npm yüklü
+- [ ] Proje dizini oluşturuldu
+- [ ] `package.json` dosyası mevcut
+- [ ] Cypress `devDependency` olarak kuruldu
+- [ ] `npx cypress open` komutu sorunsuz çalışıyor
+- [ ] Varsayılan örnek dosyalar temizlendi
+- [ ] Gerekli eklentiler kuruldu (XPath, Faker, iFrame, File Upload)
+- [ ] VS Code uzantıları yüklendi
+- [ ] `cypress.config.js` temel ayarları içeriyor
+- [ ] İlk test dosyası yazıldı ve başarıyla çalıştırıldı
+
 ## 🎉 CYPRESS FRAMEWORK KULLANIMA HAZIR !

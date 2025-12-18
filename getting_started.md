@@ -218,3 +218,92 @@ hazırlandığını hızlıca doğrulamak için referans olarak kullanılmalıd�
 - [ ] İlk test dosyası yazıldı ve başarıyla çalıştırıldı
 
 ## 🎉 CYPRESS FRAMEWORK KULLANIMA HAZIR !
+
+---
+# 🚀 Cypress Quick Start Guide (First Run)
+This document is a step-by-step guide to starting a new project with Cypress, completing the basic setup, and running the first tests.
+It is a simple, fast, and working quick start guide, especially for those using VS Code and trying Cypress for the first time.
+> 🎯 Goal: Set up the project → Run Cypress → Add required plugins → Be ready to write tests
+---
+## 1. Prerequisites
+To use Cypress, the following must be available on your system:
+1. Node.js must be installed.
+   Check the supported versions and operating system requirements in the official Cypress documentation.
+2. Package manager: npm (or yarn / pnpm).
+   The npm that comes with Node.js is usually sufficient.
+---
+## 📁 2. Project Creation
+Terminal / VS Code Terminal:
+mkdir TestAutomationWithCypress  
+cd TestAutomationWithCypress  
+npm init -y  
+Example of the automatically generated package.json after these commands:
+{
+  "name": "cypress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
+---
+## ⚙️ 3. Cypress Installation
+npm install --save-dev cypress  
+Version check:
+npx cypress -v  
+npm show cypress version  
+Open the Cypress Test Runner:
+npx cypress open  
+On the opened screen:
+- Select E2E Testing
+- Create the folder structure
+- Select Chrome as the browser
+---
+## 🧱 4. Recommended Folder Structure
+cypress/  
+ ├── e2e/  
+ ├── fixtures/  
+ ├── support/  
+ │    ├── commands.js  
+ │    └── e2e.js  
+ ├── downloads/  
+ ├── screenshots/  
+cypress.config.js  
+package.json  
+.gitignore  
+You can delete the example files inside cypress/e2e
+---
+## 🔧 5. cypress.config.js Settings
+const { defineConfig } = require("cypress");
+module.exports = defineConfig({
+  e2e: {
+    baseUrl: "https://www.site.com",
+    viewportWidth: 1366,
+    viewportHeight: 768,
+    defaultCommandTimeout: 12000,
+    retries: 2,
+    chromeWebSecurity: false
+  }
+});
+---
+## 🧩 6. Required Plugins
+Faker  
+Installation: npm install @faker-js/faker  
+Usage: import { faker } from '@faker-js/faker'  
+XPath  
+Installation: npm install -D cypress-xpath  
+Usage: import 'cypress-xpath'  
+Iframe  
+Installation: npm install -D cypress-iframe  
+Usage: cy.frameLoaded()  
+File Upload  
+Installation: npm install -D cypress-file-upload  
+Usage: cy.attachFile()  
+Enable XPath (cypress/support/e2e.js):  
+import 'cypress-xpath';
+

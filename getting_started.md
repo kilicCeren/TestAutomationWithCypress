@@ -1,5 +1,4 @@
 # 🚀 Cypress Hızlı Başlangıç Kılavuzu (First Run)
-
 Bu belge, Cypress ile yeni bir proje başlatmak, temel kurulumları yapmak ve ilk testleri çalıştırmak için gereken adım adım rehberdir.
 Özellikle VS Code kullanan ve Cypress’i ilk kez deneyecek kişiler için sade, hızlı ve çalışır bir başlangıç kılavuzudur.
 
@@ -19,7 +18,7 @@ Cypress’i kullanmak için sistemde aşağıdakiler olmalıdır:
 
 ---
 
-## 📁 1. Proje Oluşturma
+## 📁 2. Proje Oluşturma
 
 Terminal / VS Code Terminal:
 
@@ -49,7 +48,7 @@ Bu komutlar sonrası otomatik oluşan **package.json** örneği:
 
 ---
 
-## ⚙️ 2. Cypress Kurulumu
+## ⚙️ 3. Cypress Kurulumu
 
 ```bash
 npm install --save-dev cypress
@@ -75,7 +74,7 @@ npx cypress open
 
 ---
 
-## 🧱 3. Önerilen Klasör Yapısı
+## 🧱 4. Önerilen Klasör Yapısı
 
 ```
 cypress/
@@ -96,7 +95,7 @@ package.json
 
 ---
 
-## 🔧 4. cypress.config.js Ayarları
+## 🔧 5. cypress.config.js Ayarları
 
 ```js
 const { defineConfig } = require("cypress");
@@ -115,7 +114,7 @@ module.exports = defineConfig({
 
 ---
 
-## 🧩 5. Gerekli Eklentiler
+## 🧩 6. Gerekli Eklentiler
 
 | Eklenti | Kurulum | Kullanım |
 |------|------|------|
@@ -134,7 +133,7 @@ import 'cypress-xpath';
 
 ---
 
-## 🧪 6. Temel Cypress Komutları
+## 🧪 7. Temel Cypress Komutları
 
 ```js
 cy.go('back');
@@ -144,7 +143,7 @@ cy.reload();
 
 ---
 
-## 🖥️ 7. Cypress CLI Kullanımı
+## 🖥️ 8. Cypress CLI Kullanımı
 
 | Komut | Açıklama |
 |----|----|
@@ -156,7 +155,7 @@ cy.reload();
 
 ---
 
-## 📦 8. Custom Command Örneği
+## 📦 9. Custom Command Örneği
 
 `cypress/support/commands.js`
 
@@ -170,7 +169,7 @@ Cypress.Commands.add("login", (email, password) => {
 
 ---
 
-## 🔌 9. File Upload Örneği
+## 🔌 10. File Upload Örneği
 
 ```js
 import 'cypress-file-upload';
@@ -180,7 +179,7 @@ cy.get('#upload').attachFile('test.pdf');
 
 ---
 
-## 🧠 10. VS Code Önerilen Eklentiler
+## 🧠 11. VS Code Önerilen Eklentiler
 
 - Cypress Snippets — Sık kullanılan Cypress komutları için kısa yollar.
 - Cypress Fixture IntelliSense — Fixtures dosyalarını kolay çağırmayı sağlar.
@@ -190,7 +189,7 @@ cy.get('#upload').attachFile('test.pdf');
 
 ---
 
-## 🔐 11. Git Başlangıç
+## 🔐 12. Git Başlangıç
 
 ```bash
 git --version
@@ -203,7 +202,7 @@ git commit -m "Initial commit - Cypress Framework"
 ```
 ---
 
-## 12. ✅ Kurulum Doğrulama Kontrol Listesi
+## 13. ✅ Kurulum Doğrulama Kontrol Listesi
 Bu bölüm, Cypress test ortamının yerel makinede doğru şekilde
 hazırlandığını hızlıca doğrulamak için referans olarak kullanılmalıdır.
 - [ ] Node.js ve npm yüklü
@@ -220,24 +219,43 @@ hazırlandığını hızlıca doğrulamak için referans olarak kullanılmalıd�
 ## 🎉 CYPRESS FRAMEWORK KULLANIMA HAZIR !
 
 ---
+
 # 🚀 Cypress Quick Start Guide (First Run)
-This document is a step-by-step guide to starting a new project with Cypress, completing the basic setup, and running the first tests.
-It is a simple, fast, and working quick start guide, especially for those using VS Code and trying Cypress for the first time.
-> 🎯 Goal: Set up the project → Run Cypress → Add required plugins → Be ready to write tests
+
+This document is a step-by-step guide for starting a new project with Cypress, completing the basic setup, and running your first tests.
+It is specifically designed as a clean, fast, and practical starting guide for users who work with **VS Code** and are trying **Cypress** for the first time.
+
+> 🎯 Goal: Set up the project → Run Cypress → Install required plugins → Be ready to write tests
+
 ---
+
 ## 1. Prerequisites
-To use Cypress, the following must be available on your system:
-1. Node.js must be installed.
-   Check the supported versions and operating system requirements in the official Cypress documentation.
-2. Package manager: npm (or yarn / pnpm).
-   The npm that comes with Node.js is usually sufficient.
+
+To use Cypress, the following must be installed on your system:
+
+1. **Node.js**
+
+   * Check the supported versions and operating system requirements in the official Cypress documentation.
+
+2. A package manager: **npm** (or yarn / pnpm)
+
+   * npm, which comes with Node.js, is usually sufficient.
+
 ---
-## 📁 2. Project Creation
+
+## 📁 2. Create a Project
+
 Terminal / VS Code Terminal:
-mkdir TestAutomationWithCypress  
-cd TestAutomationWithCypress  
-npm init -y  
-Example of the automatically generated package.json after these commands:
+
+```bash
+mkdir TestAutomationWithCypress
+cd TestAutomationWithCypress
+npm init -y
+```
+
+Example of the automatically generated **package.json** file:
+
+```json
 {
   "name": "cypress",
   "version": "1.0.0",
@@ -251,35 +269,63 @@ Example of the automatically generated package.json after these commands:
   "license": "ISC",
   "type": "commonjs"
 }
+```
+
 ---
-## ⚙️ 3. Cypress Installation
-npm install --save-dev cypress  
-Version check:
-npx cypress -v  
-npm show cypress version  
+
+## ⚙️ 3. Install Cypress
+
+```bash
+npm install --save-dev cypress
+```
+
+Check the installed version:
+
+```bash
+npx cypress -v
+npm show cypress version
+```
+
 Open the Cypress Test Runner:
-npx cypress open  
-On the opened screen:
-- Select E2E Testing
-- Create the folder structure
-- Select Chrome as the browser
+
+```bash
+npx cypress open
+```
+
+> In the opened screen:
+>
+> * Select **E2E Testing**
+> * Generate the project file structure
+> * Choose **Chrome** as the browser
+
 ---
+
 ## 🧱 4. Recommended Folder Structure
-cypress/  
- ├── e2e/  
- ├── fixtures/  
- ├── support/  
- │    ├── commands.js  
- │    └── e2e.js  
- ├── downloads/  
- ├── screenshots/  
-cypress.config.js  
-package.json  
-.gitignore  
-You can delete the example files inside cypress/e2e
+
+```
+cypress/
+ ├── e2e/
+ ├── fixtures/
+ ├── support/
+ │    ├── commands.js
+ │    └── e2e.js
+ ├── downloads/
+ ├── screenshots/
+
+cypress.config.js
+package.json
+.gitignore
+```
+
+> 📌 You can safely **delete the example files** inside `cypress/e2e`
+
 ---
-## 🔧 5. cypress.config.js Settings
+
+## 🔧 5. cypress.config.js Configuration
+
+```js
 const { defineConfig } = require("cypress");
+
 module.exports = defineConfig({
   e2e: {
     baseUrl: "https://www.site.com",
@@ -290,20 +336,112 @@ module.exports = defineConfig({
     chromeWebSecurity: false
   }
 });
----
-## 🧩 6. Required Plugins
-Faker  
-Installation: npm install @faker-js/faker  
-Usage: import { faker } from '@faker-js/faker'  
-XPath  
-Installation: npm install -D cypress-xpath  
-Usage: import 'cypress-xpath'  
-Iframe  
-Installation: npm install -D cypress-iframe  
-Usage: cy.frameLoaded()  
-File Upload  
-Installation: npm install -D cypress-file-upload  
-Usage: cy.attachFile()  
-Enable XPath (cypress/support/e2e.js):  
-import 'cypress-xpath';
+```
 
+---
+
+## 🧩 6. Required Plugins
+
+| Plugin      | Installation                         | Usage                                     |
+| ----------- | ------------------------------------ | ----------------------------------------- |
+| Faker       | `npm install @faker-js/faker`        | `import { faker } from '@faker-js/faker'` |
+| XPath       | `npm install -D cypress-xpath`       | `import 'cypress-xpath'`                  |
+| Iframe      | `npm install -D cypress-iframe`      | `cy.frameLoaded()`                        |
+| File Upload | `npm install -D cypress-file-upload` | `cy.attachFile()`                         |
+
+### Enable XPath
+
+`cypress/support/e2e.js`
+
+```js
+import 'cypress-xpath';
+```
+
+---
+
+## 🧪 7. Basic Cypress Commands
+
+```js
+cy.go('back');
+cy.go('forward');
+cy.reload();
+```
+
+---
+
+## 🖥️ 8. Cypress CLI Usage
+
+| Command                                         | Description        |
+| ----------------------------------------------- | ------------------ |
+| `npx cypress open`                              | GUI mode           |
+| `npx cypress run`                               | Headless execution |
+| `npx cypress run --browser chrome`              | Run in Chrome      |
+| `npx cypress run --spec cypress/e2e/test.cy.js` | Run a single test  |
+| `npx cypress open --e2e --browser chrome`       | Chrome GUI mode    |
+
+---
+
+## 📦 9. Custom Command Example
+
+`cypress/support/commands.js`
+
+```js
+Cypress.Commands.add("login", (email, password) => {
+  cy.get('#email').type(email);
+  cy.get('#password').type(password);
+  cy.get('button[type=submit]').click();
+});
+```
+
+---
+
+## 🔌 10. File Upload Example
+
+```js
+import 'cypress-file-upload';
+
+cy.get('#upload').attachFile('test.pdf');
+```
+
+---
+
+## 🧠 11. Recommended VS Code Extensions
+
+* **Cypress Snippets** — Shortcuts for commonly used Cypress commands.
+* **Cypress Fixture IntelliSense** — Easy access to fixture files.
+* **ES6 Mocha Snippets** — Fast autocomplete for describe, it, and hooks.
+* **Bracket Pair Colorization** — Highlights brackets and code blocks.
+* **Postman** — Quickly test and validate APIs without opening a separate Postman app.
+
+---
+
+## 🔐 12. Git Basics
+
+```bash
+git --version
+git config --global user.name "Your Name"
+git config --global user.email "youremail@example.com"
+
+git init
+git add .
+git commit -m "Initial commit - Cypress Framework"
+```
+
+---
+
+## 13. ✅ Installation Verification Checklist
+
+This section is intended to be used as a quick reference to verify that the Cypress test environment has been correctly set up on the local machine.
+- [ ]  Node.js and npm installed
+- [ ]  Project directory created
+- [ ] `package.json` file exists
+- [ ] Cypress installed as a `devDependency`
+- [ ] `npx cypress open` runs without issues
+- [ ] Default example files removed
+- [ ] Required plugins installed (XPath, Faker, iFrame, File Upload)
+- [ ] VS Code extensions installed
+- [ ] `cypress.config.js` contains the basic configuration
+- [ ] First test file written and executed successfully
+
+
+## 🎉 CYPRESS FRAMEWORK IS READY TO USE!

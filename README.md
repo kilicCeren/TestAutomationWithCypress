@@ -17,7 +17,7 @@ Bu otomasyon projesinde kullanılan temel teknolojiler ve ek kütüphaneler:
 
 ### 📁 Proje Yapısı ve Gelişim Takvimi
 
-Proje, 9 günlük bir eğitim/geliştirme planına göre yapılandırılmış ve her günün testleri ayrı bir dizinde toplanmıştır.
+Proje, 10 günlük bir eğitim/geliştirme planına göre yapılandırılmış ve her günün testleri ayrı bir dizinde toplanmıştır.
 
 ```
 TestAutomationWithCypress/ 
@@ -214,7 +214,7 @@ The core technologies and supplementary libraries used in this automation projec
 
 ### 📁 Project Structure and Development Timeline
 
-The project is structured according to a 9-day training/development plan, with each day's tests gathered in a separate directory. 
+The project is structured according to a 10-day training/development plan, with each day's tests gathered in a separate directory. 
 
 ```
 TestAutomationWithCypress/ 
